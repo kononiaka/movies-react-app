@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import TableHeader from "./common/TableHeader";
-import TableBody from "./common/TableBody";
 import Like from "./common/Like";
+import Table from "./common/Table";
 
 class MoviesTable extends Component {
   columns = [
@@ -29,23 +28,16 @@ class MoviesTable extends Component {
   ];
 
   render() {
-    const { movies, onLike, onDelete, onSort, sortColumn } = this.props;
+    const { movies, onSort, sortColumn } = this.props;
 
     return (
       <>
-        <table className="table">
-          <TableHeader
-            onSort={onSort}
-            sortColumn={sortColumn}
-            columns={this.columns}
-          ></TableHeader>
-          <TableBody
-            data={movies}
-            onLike={onLike}
-            onDelete={onDelete}
-            columns={this.columns}
-          ></TableBody>
-        </table>
+        <Table
+          data={movies}
+          onSort={onSort}
+          sortColumn={sortColumn}
+          columns={this.columns}
+        ></Table>
       </>
     );
   }
