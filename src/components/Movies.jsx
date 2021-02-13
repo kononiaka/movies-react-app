@@ -6,6 +6,7 @@ import ListGroup from "./ListGroup";
 import MoviesTable from "./MoviesTable";
 import { paginate } from "./utils/paginate";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 class Movies extends Component {
   state = {
@@ -72,6 +73,7 @@ class Movies extends Component {
 
     return { totalCount: filtered.length, data: movies };
   };
+
   render() {
     const { length: count } = this.state.movies;
     const {
@@ -97,6 +99,13 @@ class Movies extends Component {
             ></ListGroup>
           </div>
           <div className="col">
+            <Link
+              to="/movies/new"
+              className="btn btn-primary"
+              style={{ marginBottom: 20 }}
+            >
+              New Movie
+            </Link>
             <p>Showing {totalCount} movies in the database</p>
             <MoviesTable
               sortColumn={sortColumn}
