@@ -100,9 +100,9 @@ class Movies extends Component {
           </div>
           <div className="col">
             <Link
-              to="/movies/new"
               className="btn btn-primary"
               style={{ marginBottom: 20 }}
+              to="movies/new"
             >
               New Movie
             </Link>
