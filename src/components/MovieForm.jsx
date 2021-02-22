@@ -39,7 +39,7 @@ class MovieForm extends Form {
     this.setState({ data: this.mapToViewModel(movie) });
   }
 
-  mapToViewModel(movie) {
+  mapToViewModel({ movie }) {
     return {
       _id: movie._id,
       title: movie.title,
