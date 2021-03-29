@@ -15,10 +15,15 @@ axios.interceptors.response.use(null, (error) => {
   return Promise.reject(error);
 });
 
+function setJwt(jwt) {
+  axios.defaults.headers.common["x-auth-token"] = jwt;
+}
+
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   get: axios.get,
   put: axios.put,
   delete: axios.delete,
   post: axios.post,
+  setJwt,
 };

@@ -22,10 +22,11 @@ class App extends Component {
     this.setState({ user });
   }
   render() {
+    const { user } = this.state;
     return (
       <>
         <ToastContainer></ToastContainer>
-        <NavBar user={this.state.user}></NavBar>
+        <NavBar user={user}></NavBar>
         <main className="container">
           <Switch>
             <Route path="/login" component={LoginForm}></Route>
@@ -33,8 +34,17 @@ class App extends Component {
             <Route path="/register" component={RegisterForm}></Route>
             <Route path="/customers" component={Customers}></Route>
             <Route path="/rentals" component={Rentals}></Route>
-            <Route path="/movies/:id" component={MovieForm}></Route>
-            <Route path="/movies" component={Movies}></Route>
+            <Route
+              path="/movies/:id"
+              render={(props) => {
+                if (!user) return <Redirect to="/login" />;
+                return <MovieForm {...props} />;
+              }}
+            ></Route>
+            <Route
+              path="/movies"
+              render={(props) => <Movies {...props} user={user} />}
+            ></Route>
             <Route path="/not-found" component={NotFound}></Route>
             <Redirect from="/" to="/movies"></Redirect>
             <Redirect to="/not-found"></Redirect>
